@@ -8,6 +8,7 @@
             background-color: rgba(146, 146, 189, 0.459);
             color:black;
             padding: 10px;
+            position: relative; 
         }
 
         .search-form {
@@ -26,11 +27,21 @@
             border: none;
             cursor: pointer;
         }
+
+        .logout-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: blue;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <nav>
         <h1>Welcome, Job Seeker!</h1>
+
+        <a href="{% url 'logout' %}" class="logout-link">Logout</a>
 
         <form action="{% url 'searchjob' %}" method="get" class="search-form">
             <input type="text" name="keywords" placeholder="Keywords">
@@ -42,6 +53,7 @@
             <li><a href="{% url 'create_or_update_profile' %}">Update Profile</a></li>
             <li><a href="{% url 'job_listing_list' %}">View Job Listings</a></li>
             <li><a href="{% url 'job_applications' %}">View Job Applications</a></li>
+            <li><a href="{% url 'report_issue' %}">Report Issue</a></li>
         </ul>
     </nav>
 </body>

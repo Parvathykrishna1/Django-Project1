@@ -1,8 +1,7 @@
 from django.db import models
-from . models import CustomUser
 
 class RecruiterProfile(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField('user_management.CustomUser', on_delete=models.CASCADE)
     full_name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     designation = models.CharField(max_length=50, blank=True, null=True)
@@ -13,7 +12,7 @@ class RecruiterProfile(models.Model):
     established_year = models.PositiveIntegerField(blank=True, null=True)
 
 class JobListing(models.Model):
-    employer = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    employer = models.ForeignKey('user_management.CustomUser', on_delete=models.CASCADE)
     job_title = models.CharField(max_length=100)
     job_description = models.TextField()
     required_qualifications = models.TextField()
@@ -30,4 +29,3 @@ class JobListing(models.Model):
 
     def __str__(self):
         return self.job_title
-

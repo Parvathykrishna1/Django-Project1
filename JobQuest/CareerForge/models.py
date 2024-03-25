@@ -1,6 +1,6 @@
 from django.db import models
-from .models import CustomUser
-from .models import JobListing
+from user_management.models import CustomUser
+from TalentHub.models import JobListing
 
 class JobSeekerProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
@@ -17,7 +17,6 @@ class JobSeekerProfile(models.Model):
     state = models.CharField(max_length=50, blank=True, null=True)
     district = models.CharField(max_length=50, blank=True, null=True)
 
-
     def __str__(self):
         return self.full_name
 
@@ -29,8 +28,19 @@ class JobApplication(models.Model):
         ('rejected', 'Rejected'),
     ]
 
-    job_listing = models.ForeignKey(JobListing, on_delete=models.CASCADE)
+    job_listing = models.ForeignKey('TalentHub.JobListing', on_delete=models.CASCADE)
     applicant_name = models.CharField(max_length=100)
     resume = models.FileField(upload_to='resumes/')
     cover_letter = models.TextField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+
+class Issue(models.Model):
+    job_listing = models.ForeignKey(JobListing, on_delete=models.CASCADE)
+    description = models.TextField()
+    reported_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, default='open')
+
+    def __str__(self):
+        return f"Issue reported by {self.reported_by.username} - {self.job_listing}"

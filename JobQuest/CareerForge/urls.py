@@ -10,4 +10,6 @@ urlpatterns = [
     path('job_apply_status/', views.job_apply_status, name='job_apply_status'),
     path('job_applications/', views.job_application_list, name='job_applications'),
     path('searchjob/', views.job_search_filter_view, name='searchjob'),
+    path('report_issue/', views.report_issue, name='report_issue'),
+
 ]

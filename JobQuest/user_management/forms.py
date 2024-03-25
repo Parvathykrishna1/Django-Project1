@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from .models import CustomUser
+from user_management.models import CustomUser
 from django.contrib.auth import authenticate
 
 class RegistrationForm(UserCreationForm):
@@ -32,6 +32,3 @@ class LoginForm(AuthenticationForm):
 
         if username and password:
             return cleaned_data
-
-class ResolveDisputeForm(forms.Form):
-    resolution = forms.CharField(label='Resolution', widget=forms.Textarea)

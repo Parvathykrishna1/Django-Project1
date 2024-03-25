@@ -1,5 +1,6 @@
 from django import forms
 from .models import JobSeekerProfile,JobApplication
+from .models import Issue
 
 class JobSeekerProfileForm(forms.ModelForm):
     class Meta:
@@ -16,3 +17,7 @@ class JobSearchForm(forms.Form):
     location = forms.CharField(required=False)
     industry = forms.CharField(required=False)
 
+class IssueForm(forms.ModelForm):
+    class Meta:
+        model = Issue
+        fields = ['job_listing', 'description']

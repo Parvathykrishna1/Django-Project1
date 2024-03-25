@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
+from CareerForge.models import Issue
 from .forms import LoginForm, RegistrationForm
-from .forms import ResolveDisputeForm
-from .models import ReportedIssue
 
 
 def home(request):
@@ -41,19 +40,6 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
-def dispute_list(request):
-    disputes = ReportedIssue.objects.all()
-    return render(request, 'dispute_list.html', {'disputes': disputes})
-
-def resolve_dispute(request, dispute_id):
-    dispute = get_object_or_404(ReportedIssue, pk=dispute_id)
-    if request.method == 'POST':
-        form = ResolveDisputeForm(request.POST)
-        if form.is_valid():
-            dispute.resolution = form.cleaned_data['resolution']
-            dispute.resolved = True
-            dispute.save()
-            return redirect('dispute_list')
-    else:
-        form = ResolveDisputeForm()
-    return render(request, 'resolve_dispute.html', {'form': form, 'dispute': dispute})
+def change_issues(request):
+    issues = Issue.objects.all()
+    return render(request, 'issue_chnage_list.html', {'issues': issues})

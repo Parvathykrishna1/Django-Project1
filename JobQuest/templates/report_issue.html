@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report Issue</title>
+</head>
+<body>
+    <h1>Report Issue</h1>
+
+    <form method="post" action="{% url 'report_issue' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

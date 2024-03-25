@@ -3,6 +3,10 @@ from CareerForge.forms import JobSeekerProfileForm,JobApplicationForm, JobSearch
 from CareerForge.models import JobSeekerProfile, JobApplication
 from TalentHub.models import JobListing
 from django.db.models import Q
+from django.contrib import messages
+from .forms import IssueForm
+from django.contrib.auth.decorators import login_required
+from CareerForge.models import Issue
 
 
 def job_seeker_home(request):
@@ -83,3 +87,23 @@ def job_search_filter_view(request):
         form = JobSearchForm()
 
     return render(request, 'job_seeker_home.html', {'form': form})
+
+
+def report_issue(request):
+    if request.method == 'POST':
+        form = IssueForm(request.POST)
+        if form.is_valid():
+            try:
+                issue = form.save(commit=False)
+                issue.reported_by = request.user
+                issue.save()
+                messages.success(request, 'Issue reported successfully!')
+                return redirect('job_seeker_home')
+            except Exception as e:
+                messages.error(request, f'An error occurred while saving the issue: {str(e)}')
+        else:
+            messages.error(request, 'Form is invalid. Please correct the errors.')
+    else:
+        form = IssueForm()
+    return render(request, 'report_issue.html', {'form': form})
+
