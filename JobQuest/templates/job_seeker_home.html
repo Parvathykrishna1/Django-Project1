@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Seeker Home</title>
+    <style>
+        nav {
+            background-color: rgba(146, 146, 189, 0.459);
+            color:black;
+            padding: 10px;
+        }
+
+        .search-form {
+            float: right;
+        }
+
+        .search-form input[type="text"] {
+            padding: 5px;
+            margin-right: 5px;
+        }
+
+        .search-form button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Welcome, Job Seeker!</h1>
+
+        <form action="{% url 'searchjob' %}" method="get" class="search-form">
+            <input type="text" name="keywords" placeholder="Keywords">
+            <input type="text" name="location" placeholder="Location">
+            <button type="submit">Search</button>
+        </form>
+
+        <ul>
+            <li><a href="{% url 'create_or_update_profile' %}">Update Profile</a></li>
+            <li><a href="{% url 'job_listing_list' %}">View Job Listings</a></li>
+            <li><a href="{% url 'job_applications' %}">View Job Applications</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Process Job Application</title>
+</head>
+<body>
+    <h1>Process Job Application</h1>
+    <p>Job Title: {{ job_application.job_listing.job_title }}</p>
+    <p>Applicant Name: {{ job_application.applicant_name }}</p>
+    <p>Resume: <a href="{{ job_application.resume.url }}">Download Resume</a></p>
+    <p>Cover Letter: {{ job_application.cover_letter }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="new_status">New Status:</label>
+        <select name="new_status" id="new_status">
+            {% for status, status_display in job_application.STATUS_CHOICES %}
+                <option value="{{ status }}">{{ status_display }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Update Status</button>
+    </form>
+</body>
+</html>

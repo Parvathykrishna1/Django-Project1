@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Search Results</title>
+</head>
+<body>
+    <h1>Job Search Results</h1>
+    {% if job_listings %}
+        <ul>
+            {% for job_listing in job_listings %}
+                <li>
+                    <h2>{{ job_listing.job_title }}</h2>
+                    <p><strong>Location:</strong> {{ job_listing.location }}</p>
+                    <p><strong>Description:</strong> {{ job_listing.job_description }}</p>
+                    <p><strong>Required Qualifications:</strong> {{ job_listing.required_qualifications }}</p>
+                    <p><strong>Desired Qualifications:</strong> {{ job_listing.desired_qualifications }}</p>
+                    <p><strong>Responsibilities:</strong> {{ job_listing.responsibilities }}</p>
+                    <p><strong>Application Deadline:</strong> {{ job_listing.application_deadline }}</p>
+                    <p><strong>Salary Range:</strong> {{ job_listing.salary_range }}</p>
+                    <p><strong>Employment Type:</strong> {{ job_listing.employment_type }}</p>
+                    <p><strong>Company Benefits:</strong> {{ job_listing.company_benefits }}</p>
+                    <p><strong>How to Apply:</strong> {{ job_listing.how_to_apply }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No job listings match your search criteria.</p>
+    {% endif %}
+</body>
+</html>

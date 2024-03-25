@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Applications</title>
+</head>
+<body>
+    <h1>All Job Applications</h1>
+    <ul>
+        {% for job_application in job_applications %}
+            <li><a href="{% url 'process_job_application' job_application.id %}">View Application - {{ job_application.applicant_name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

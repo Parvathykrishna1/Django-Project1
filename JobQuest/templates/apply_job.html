@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Listing Detail</title>
+</head>
+<body>
+    <h1>{{ job_listing.job_title }}</h1>
+    <p>Employer: {{ job_listing.employer.recruiterprofile.company_name }}</p>
+    <p>Job Description: {{ job_listing.job_description }}</p>
+    <p>Required Qualifications: {{ job_listing.required_qualifications }}</p>
+    <p>Desired Qualifications: {{ job_listing.desired_qualifications }}</p>
+    <p>Responsibilities: {{ job_listing.responsibilities }}</p>
+    <p>Application Deadline: {{ job_listing.application_deadline }}</p>
+    <p>Salary Range: {{ job_listing.salary_range }}</p>
+    <p>Location: {{ job_listing.location }}</p>
+    <p>Employment Type: {{ job_listing.employment_type }}</p>
+    <p>Company Benefits: {{ job_listing.company_benefits }}</p>
+    <p>How to Apply: {{ job_listing.how_to_apply }}</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Apply</button>
+    </form>
+</body>
+</html>
