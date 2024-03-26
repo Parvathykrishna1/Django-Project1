@@ -74,6 +74,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'JobQuest.wsgi.application'
 
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_PORT = '2525'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'e55fb2562cff4e'
+EMAIL_HOST_PASSWORD = 'd9f1b232a27b27'
+
+
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -121,6 +131,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 
 

@@ -29,10 +29,13 @@ class JobApplication(models.Model):
     ]
 
     job_listing = models.ForeignKey('TalentHub.JobListing', on_delete=models.CASCADE)
-    applicant_name = models.CharField(max_length=100)
+    applicant_name = models.ForeignKey(JobSeekerProfile, on_delete=models.CASCADE)
     resume = models.FileField(upload_to='resumes/')
     cover_letter = models.TextField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+
+    def __str__(self):
+        return f"{self.applicant_profile.full_name}'s Application for {self.job_listing.job_title}"
 
 class Issue(models.Model):
     job_listing = models.ForeignKey(JobListing, on_delete=models.CASCADE)

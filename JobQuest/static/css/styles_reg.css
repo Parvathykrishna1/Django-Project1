@@ -1,0 +1,88 @@
+/* styles.css */
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set background color and font family */
+body {
+    background-color: #ffffff;
+}
+
+/* Center the container vertically and horizontally */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #d8d8ebab;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the heading */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #6a08c5;
+}
+
+/* Style the form */
+form {
+    margin-top: 20px;
+}
+
+/* Style form inputs */
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="email"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1a08be;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #078337;
+}
+
+/* Style the login link */
+p {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom:20px;
+    color: #333333;
+}
+
+p a {
+    color: #099e09;
+    text-decoration: underline;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

@@ -1,26 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Recruiter Home</title>
-    <style>
-        .logout-link {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles_rhome.css' %}">
 </head>
 <body>
-    <h1>Welcome, Recruiter!</h1>
+    <nav class="navbar">
+        <div class="container">
+            <div class="left-side">
+                <a href="#" class="website-name">JobQuest</a>
+                <a href="{% url 'recruiter_home' %}" class="nav-link">Home</a>
+            </div>
+            <div class="right-side">
+                <a href="{% url 'logout' %}" class="nav-link"><strong>Logout</strong></a>
+            </div>
+        </div>
+    </nav>
 
-    <a class="logout-link" href="{% url 'logout' %}">Logout</a>
+    <div class="content">
+        <h1>Welcome, Recruiter!</h1>
 
-    <ul>
-        <li><a href="{% url 'recruiter_profile' %}">Update Employer/Recruiter Profile</a></li>
-        <li><a href="{% url 'post_job' %}">Post Job</a></li>
-        <li><a href="{% url 'job_listing_detail' %}">Job Listings</a></li>
-        <li><a href="{% url 'received_applications' %}">Received Applications</a></li>
-    </ul>
+        <ul>
+            <li><a href="{% url 'recruiter_profile' %}">Profile</a></li>
+            <li><a href="{% url 'post_job' %}">New Job</a></li>
+            <li><a href="{% url 'job_listing_detail' %}">Job List</a></li>
+            <li><a href="{% url 'received_applications' %}">Applications</a></li>
+        </ul>
+    </div>
 </body>
 </html>

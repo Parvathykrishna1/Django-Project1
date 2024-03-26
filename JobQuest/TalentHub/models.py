@@ -25,7 +25,6 @@ class JobListing(models.Model):
     company_benefits = models.TextField()
     how_to_apply = models.TextField()
     other_information = models.TextField(blank=True, null=True)
-    status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('approved', 'Approved'), ('rejected', 'Rejected')], default='pending')
 
     def __str__(self):
         return self.job_title

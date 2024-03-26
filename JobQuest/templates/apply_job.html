@@ -22,5 +22,12 @@
         {{ form.as_p }}
         <button type="submit">Apply</button>
     </form>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </body>
 </html>
